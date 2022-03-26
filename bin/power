@@ -1,0 +1,12 @@
+#!/bin/bash
+
+chosen=$(printf "﫼 Sair\n Desligar\n Reiniciar\n⏾ Suspender" | rofi -dmenu -i
+-theme-str '@import "power.rasi"')
+
+case "$chosen" in
+  "﫼 Sair") bspc quit ;;
+  " Desligar") systemctl poweroff ;; 
+  " Reiniciar") systemctl reboot ;;
+  "⏾ Suspender") systemctl suspend ;;
+  *) exit 1 ;;
+esac
