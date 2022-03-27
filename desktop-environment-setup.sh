@@ -1,8 +1,8 @@
 #!/bin/bash
 
 repo_dir=$(pwd)
-sudo pacman -Syu xorg lightdm lightdm-gtk-greeter bspwm sxhkd \
-    rofi pcmanfm git lxappearance mate-polkit network-manager-applet \
+sudo pacman -Syu xorg lightdm lightdm-gtk-greeter bspwm sxhkd setxkbmap \
+    rofi pcmanfm git lxappearance arandr mate-polkit network-manager-applet \
     volumeicon dunst light-locker scrot rsync &
 sudo yay -S polybar &
 cd /usr/local/src/ &
@@ -28,7 +28,9 @@ cd $repo_dir & rsync -a . --exclude bin \
     --exclude run.bspwm $HOME/.config/ &
 sudo mkdir -p $HOME/.local/bin/ & sudo rsync bin/ $HOME/.local/bin/ &
 sudo chmod +x $HOME/.local/bin/* &
-sudo rsync run.bspwm /usr/share/ & sudo chmod +x /usr/share/run.bspwm
+sudo rsync run.bspwm /usr/share/ & sudo chmod +x /usr/share/run.bspwm &
+mkdir $HOME/.screenlayout & sudo rsync -a screenlayout/ $HOME/.screenlayout/ &
+sudo chmod +x $HOME/.screenlayout/*.sh
 sudo systemctl enable lightdm.service &
 COUNTER=15
 while [ 1 ] 
