@@ -1,0 +1,26 @@
+#!/bin/bash
+
+## Polkit authentication
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+
+## Launch nitrogen
+(sleep 2s && nitrogen --restore) &
+
+$HOME/.screenlayout/hdmi-display.sh &
+
+## Launch volumeicon
+volumeicon -d hw:1 &
+
+## Launch network manager applet
+nm-applet &
+
+## Set BR keyboard
+setxkbmap -model abnt2 -layout br -variant abnt2 &
+
+## Launch Dunst for notifications
+dunst --config $HOME/.config/dunst/dunstrc &
+
+## Screen locker
+light-locker &
+
+bspwm
