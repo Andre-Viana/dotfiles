@@ -26,11 +26,12 @@ cd $repo_dir & rsync -a . --exclude bin \
     --exclude .git --exclude vim \
     --exclude desktop-environment-setup.sh \
     --exclude run.bspwm $HOME/.config/ &
+rsync -a vim/ $HOME/.vim/ &
 sudo mkdir -p $HOME/.local/bin/ & sudo rsync bin/ $HOME/.local/bin/ &
 sudo chmod +x $HOME/.local/bin/* &
 sudo rsync run.bspwm /usr/share/ & sudo chmod +x /usr/share/run.bspwm &
 mkdir $HOME/.screenlayout & sudo rsync -a screenlayout/ $HOME/.screenlayout/ &
-sudo chmod +x $HOME/.screenlayout/*.sh
+sudo chmod +x $HOME/.screenlayout/*.sh &
 sudo systemctl enable lightdm.service &
 COUNTER=15
 while [ 1 ] 
