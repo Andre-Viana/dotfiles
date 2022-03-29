@@ -22,12 +22,12 @@ curl -fLo nerd-fonts/Ubuntu.zip --create-dirs \
 sudo mkdir /usr/share/fonts/TTF/UbuntuNerd
 sudo unzip nerd-fonts/Ubuntu.zip -d /usr/share/fonts/TTF/UbuntuNerd/
 rmdir -r $HOME/Downloads/nerd-fonts
-cd $repo_dir & rsync -a config/ $HOME/.config/
+cd $repo_dir && rsync -a config/ $HOME/.config/
 rsync -a vim/ $HOME/.vim/ && rsync -a .bashrc .vimrc $HOME/
 sudo mkdir -p $HOME/.local/bin/ && sudo rsync bin/ $HOME/.local/bin/
 sudo chmod +x $HOME/.local/bin/*
 sudo rsync run.bspwm /usr/share/ && sudo chmod +x /usr/share/run.bspwm
-mkdir $HOME/.screenlayout & sudo rsync -a screenlayout/ $HOME/.screenlayout/
+mkdir $HOME/.screenlayout && sudo rsync -a screenlayout/ $HOME/.screenlayout/
 sudo chmod +x $HOME/.screenlayout/*.sh
 sudo systemctl enable lightdm.service
 COUNTER=15
