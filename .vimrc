@@ -7,17 +7,29 @@ set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8 " The encoding of the generated files
 set fileencodings=utf-8
 
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
 "" Plugins Section 
 call plug#begin()
-Plug 'arcticicestudio/nord-vim'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'junegunn/goyo.vim'
 Plug 'vim-airline/vim-airline'
 call plug#end()
 
-colorscheme nord
+set t_Co=256
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
 
 "" General
 set number	" Show line numbers
+
+set relativenumber " relative line number
+set rnu
+
 set linebreak	" Break lines at word (requires Wrap lines)
 set showbreak=+++ 	" Wrap-broken line prefix
 set textwidth=100	" Line wrap (number of cols)
