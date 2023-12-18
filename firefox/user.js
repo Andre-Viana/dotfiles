@@ -227,8 +227,9 @@ user_pref("browser.urlbar.unitConversion.enabled", true);
 user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 
-/*** POCKET ***/
+/*** POCKET FIRE FOXVIEW ***/
 user_pref("extensions.pocket.enabled", false);
+user_pref("browser.tabs.firefox-view", false);
 
 /** DOWNLOADS ***/
 user_pref("browser.download.useDownloadDir", false);
