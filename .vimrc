@@ -1,28 +1,33 @@
 set nocompatible " Don't try to be vi compatible
 filetype off " Helps force plugins to load correctly when it is turned back on below
 filetype plugin indent on " For plugins to load correctly
+filetype plugin on
 syntax on "Turn on syntax highlighting
+map , <Leader>
 
 set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8 " The encoding of the generated files
 set fileencodings=utf-8
-
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
+set mouse=a
 
 "" Plugins Section 
 call plug#begin()
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'junegunn/goyo.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'joshdick/onedark.vim'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
-set t_Co=256
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+"Use 24-bit (true-color) mode in Vim when outside tmux.
+if (empty($TMUX))
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+colorscheme onedark
+
+let g:vimwiki_list = [{'path': '~/Documentos/vimwiki/', 'path_html': '~/Documentos/vimwiki/html', 'syntax': 'markdown', 'ext': '.md', 'custom_wiki2html': '~/Documentos/vimwiki/script/wiki2html.sh'}] 
 
 "" General
 set number	" Show line numbers
@@ -31,7 +36,7 @@ set relativenumber " relative line number
 set rnu
 
 set linebreak	" Break lines at word (requires Wrap lines)
-set showbreak=+++ 	" Wrap-broken line prefix
+"" set showbreak=+++ 	" Wrap-broken line prefix
 set textwidth=100	" Line wrap (number of cols)
 set showmatch	" Highlight matching brace
 set visualbell	" Use visual bell (no beeping)
@@ -68,3 +73,21 @@ set nobackup	" get rid of annoying ~file
  
 set undolevels=1000	" Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
+
+"Directory tree ^b
+inoremap <c-b> <Esc>:Lex<cr>:vertical resize 30<cr>
+nnoremap <c-b> <Esc>:Lex<cr>:vertical resize 30<cr>
+
+" Auto-close braces ans quotes"
+inoremap { {}<Esc>ha
+inoremap ( ()<Esc>ha
+inoremap [ []<Esc>ha
+inoremap " ""<Esc>ha
+inoremap ' ''<Esc>ha
+
+" Disable Arrow keys in Normal mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+

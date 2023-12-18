@@ -96,6 +96,17 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+alias wiki2html="$HOME/Documentos/vimwiki/script/./vimwiki_to_html.sh $HOME/Documentos/vimwiki $HOME/Documentos/vimwiki/html/ && epiphany $HOME/Documentos/vimwiki/html/index.html"
+alias go2notes="epiphany $HOME/Documentos/vimwiki/html/index.html"
+
+notes(){
+    grep -i "$1" "$HOME/Documentos/vimwiki/VimWiki.md" -A 3 
+}
+
+git_cheat(){
+    grep -i "$1" "$HOME/Documentos/vimwiki/Git.md" -A "$2" 
+}
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -116,4 +127,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PS1="\n \[\033[0;34m\]┌─(\[\033[1;35m\]\u\[\033[0;34m\])─(\[\033[1;32m\]\w\[\033[0;34m\]) \n └> \[\033[1;36m\]\$ \[\033[0m\]"
+PS1="\n \[\033[0;34m\]┌─[\[\033[1;35m\]\u\[\033[0;34m\]:\[\033[1;32m\]\w\[\033[0;34m\]] \n └> \[\033[1;36m\]\$ \[\033[0m\]"
+
+neofetch
