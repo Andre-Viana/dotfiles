@@ -9,6 +9,9 @@ super + Return
 # program launcher
 super + @space
 	rofi -modi drun -show drun -show-icons
+	
+super + Tab
+	rofi -modi window -show window -show-icons 
 
 # logout, restart, power off
 super + shift + q 
